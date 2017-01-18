@@ -1,51 +1,51 @@
 <?php
 
 use Themosis\Facades\Field;
+use Themosis\Facades\Metabox;
 use Themosis\Facades\PostType;
 
 class Frankenstein
 {
     public $config;
-    public $createdFields;
-    public $createdPostTypes;
-    public $createdTaxonomies;
 
     public function __construct($config)
     {
         $this->config = $config;
     }
 
-    public function configToThemosis()
+    public function run()
     {
-        // td($this->config);
-        $this->createFields($this->config->fields);
+//        td($this->config);
         $this->createPostTypes($this->config->postTypes);
     }
 
     public function createFields($fields)
     {
+        $createdFields = [];
         foreach ($fields as $field)
         {
-            $typeName = $field->type;
-            Field::$typeName($field->slug, [
+            $fieldType = $field->type;
+            $createdFields[] = Field::$fieldType($field->slug, [
                 'title' => $field->title,
-                'info' => $field->info,
-                'default' => ''
+                'info' => $field->info
             ]);
-            $this->createdFields[] = $field->slug;
         }
+
+        return $createdFields;
     }
 
     public function createPostTypes($postTypes)
     {
-//        td($postTypes);
         foreach ($postTypes as $postType)
         {
-            $created = PostType::make($postType->slug, $postType->namePlural, $postType->nameSingular)->set([
+            PostType::make($postType->slug, $postType->namePlural, $postType->nameSingular)->set([
                 'public' => true,
                 'supports' => 'title'
             ]);
-            $this->createdPostTypes[] = $created->get('name');
+
+            // Create our metabox + fields and attach it to this post type
+            $fields = $this->createFields($postType->fields);
+            Metabox::make('Data', $postType->slug)->set($fields);
         }
     }
 }

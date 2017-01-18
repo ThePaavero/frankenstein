@@ -7,50 +7,30 @@
     "subPage",
     "blankPage"
   ],
-  "fields": [
-    {
-      "title": "Page Title",
-      "type": "text",
-      "info": "",
-      "slug": "page_title"
-    },
-    {
-      "title": "Short Description",
-      "type": "editor",
-      "info": "Keep it short for SEO reasons!",
-      "slug": "description"
-    },
-    {
-      "title": "Technical Specifications",
-      "type": "editor",
-      "info": "Make it look good.",
-      "slug": "technical_specs"
-    },
-    {
-      "title": "Picture Gallery",
-      "type": "infinite",
-      "info": "Suggest adding 3-10 pictures.",
-      "slug": "picture_gallery",
-      "fields": [
-        {
-          "title": "Picture file",
-          "info": "JPG or PNG only.",
-          "type": "picture",
-          "slug": "file"
-        }
-      ]
-    }
-  ],
   "postTypes": [
     {
       "nameSingular": "Car",
       "namePlural": "Cars",
-      "slug": "cars",
+      "slug": "car",
       "fields": [
-        "title",
-        "description",
-        "technical_specs",
-        "picture_gallery"
+        {
+          "title": "Page Title",
+          "type": "text",
+          "info": "",
+          "slug": "page_title"
+        },
+        {
+          "title": "Short Description",
+          "type": "editor",
+          "info": "Keep it short for SEO reasons!",
+          "slug": "description"
+        },
+        {
+          "title": "Technical Specifications",
+          "type": "editor",
+          "info": "Make it look good.",
+          "slug": "technical_specs"
+        }
       ]
     }
   ],
