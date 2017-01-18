@@ -16,7 +16,6 @@ class Frankenstein
 
     public function run()
     {
-//        td($this->config);
         $this->createPostTypes($this->config->postTypes);
         $this->createTaxonomies($this->config->taxonomies);
     }
