@@ -25,6 +25,11 @@ class Frankenstein
         foreach ($fields as $field)
         {
             $fieldType = $field->type;
+            if ($fieldType === 'infinite')
+            {
+                $createdFields[] = $this->createInfiniteField($field);
+                continue;
+            }
             $createdFields[] = Field::$fieldType($field->slug, [
                 'title' => $field->title,
                 'info' => $field->info
@@ -32,6 +37,18 @@ class Frankenstein
         }
 
         return $createdFields;
+    }
+
+    public function createInfiniteField($infiniteField)
+    {
+        $fields = $infiniteField->fields;
+        $fieldsCreated = $this->createFields($fields);
+        $infiniteFieldCreated = Field::infinite($infiniteField->slug, $fieldsCreated, [
+            'title' => $infiniteField->title,
+            'info' => $infiniteField->info
+        ]);
+
+        return $infiniteFieldCreated;
     }
 
     public function createPostTypes($postTypes)

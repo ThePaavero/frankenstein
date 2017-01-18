@@ -30,6 +30,20 @@
           "type": "editor",
           "info": "Make it look good.",
           "slug": "technical_specs"
+        },
+        {
+          "title": "Picture Gallery",
+          "type": "infinite",
+          "info": "Suggest adding 3-10 pictures.",
+          "slug": "picture_gallery",
+          "fields": [
+            {
+              "title": "Picture file",
+              "info": "JPG or PNG only.",
+              "type": "media",
+              "slug": "file"
+            }
+          ]
         }
       ]
     }
