@@ -3,6 +3,7 @@
 use Themosis\Facades\Field;
 use Themosis\Facades\Metabox;
 use Themosis\Facades\PostType;
+use Themosis\Facades\Taxonomy;
 
 class Frankenstein
 {
@@ -17,6 +18,7 @@ class Frankenstein
     {
 //        td($this->config);
         $this->createPostTypes($this->config->postTypes);
+        $this->createTaxonomies($this->config->taxonomies);
     }
 
     public function createFields($fields)
@@ -63,6 +65,16 @@ class Frankenstein
             // Create our metabox + fields and attach it to this post type
             $fields = $this->createFields($postType->fields);
             Metabox::make('Data', $postType->slug)->set($fields);
+        }
+    }
+
+    public function createTaxonomies($taxonomies)
+    {
+        foreach ($taxonomies as $taxonomy)
+        {
+            Taxonomy::make($taxonomy->slug, $taxonomy->appliesToPostTypes, $taxonomy->namePlural, $taxonomy->nameSingular)->set([
+                'public' => true
+            ]);
         }
     }
 }

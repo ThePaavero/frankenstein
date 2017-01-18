@@ -1,23 +1,15 @@
 {
-  "siteMeta": {
-    "title": "Joe's Cars"
-  },
-  "templates": [
-    "frontPage",
-    "subPage",
-    "blankPage"
-  ],
   "postTypes": [
     {
       "nameSingular": "Car",
       "namePlural": "Cars",
-      "slug": "car",
+      "slug": "cars",
       "fields": [
         {
-          "title": "Page Title",
-          "type": "text",
+          "title": "Date of registering",
+          "type": "date",
           "info": "",
-          "slug": "page_title"
+          "slug": "registered_date"
         },
         {
           "title": "Short Description",
@@ -50,9 +42,11 @@
   ],
   "taxonomies": [
     {
-      "title": "Color",
+      "nameSingular": "Color",
+      "namePlural": "Colors",
+      "slug": "colors",
       "appliesToPostTypes": [
-        "car"
+        "cars"
       ]
     }
   ]
