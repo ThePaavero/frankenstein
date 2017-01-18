@@ -59,7 +59,8 @@ class Frankenstein
         {
             PostType::make($postType->slug, $postType->namePlural, $postType->nameSingular)->set([
                 'public' => true,
-                'supports' => 'title'
+                'supports' => 'title',
+                'menu_icon' => $postType->dashIcon
             ]);
 
             // Create our metabox + fields and attach it to this post type
