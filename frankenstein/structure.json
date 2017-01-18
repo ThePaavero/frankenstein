@@ -44,7 +44,15 @@
     {
       "nameSingular": "Color",
       "namePlural": "Colors",
-      "slug": "colors",
+      "slug": "color",
+      "appliesToPostTypes": [
+        "cars"
+      ]
+    },
+    {
+      "nameSingular": "Aspiration",
+      "namePlural": "Aspirations",
+      "slug": "aspiration",
       "appliesToPostTypes": [
         "cars"
       ]
