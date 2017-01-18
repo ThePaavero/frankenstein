@@ -1,6 +1,7 @@
 <?php
 
 use Themosis\Facades\Field;
+use Themosis\Facades\PostType;
 
 class Frankenstein
 {
@@ -16,8 +17,9 @@ class Frankenstein
 
     public function configToThemosis()
     {
-//        td($this->config);
+        // td($this->config);
         $this->createFields($this->config->fields);
+        $this->createPostTypes($this->config->postTypes);
     }
 
     public function createFields($fields)
@@ -30,6 +32,20 @@ class Frankenstein
                 'info' => $field->info,
                 'default' => ''
             ]);
+            $this->createdFields[] = $field->slug;
+        }
+    }
+
+    public function createPostTypes($postTypes)
+    {
+//        td($postTypes);
+        foreach ($postTypes as $postType)
+        {
+            $created = PostType::make($postType->slug, $postType->namePlural, $postType->nameSingular)->set([
+                'public' => true,
+                'supports' => 'title'
+            ]);
+            $this->createdPostTypes[] = $created->get('name');
         }
     }
 }

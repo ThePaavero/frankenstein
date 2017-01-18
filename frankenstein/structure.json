@@ -45,7 +45,7 @@
     {
       "nameSingular": "Car",
       "namePlural": "Cars",
-      "slug": "car",
+      "slug": "cars",
       "fields": [
         "title",
         "description",
