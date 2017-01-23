@@ -24,10 +24,15 @@ class JSON_API_Cars_Controller
         foreach ($cars as $car)
         {
             $meta = get_post_meta($car->ID);
+            $meta->title = $car->post_title;
             $imageGalleryObject = unserialize($meta['picture_gallery'][0]);
+            $color = get_the_terms($car, 'color')[0];
+            $aspiration = get_the_terms($car, 'aspiration')[0];
             $formatted[] = [
                 'post' => $car,
                 'meta' => $meta,
+                'color' => $color,
+                'aspiration' => $aspiration,
                 'pictures' => $this->getPictures($imageGalleryObject)
             ];
         }
