@@ -2,7 +2,9 @@
   <div>
     <ol>
       <li v-for='picture in pictures'>
-        <img :src='picture.small' alt=''/>
+        <a :href='picture.medium' target='_blank'>
+          <img :src='picture.small' alt=''/>
+        </a>
       </li>
     </ol>
   </div>

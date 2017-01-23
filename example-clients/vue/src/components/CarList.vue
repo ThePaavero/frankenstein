@@ -8,12 +8,8 @@
           <li>Price: {{ car.meta.price }} €</li>
           <li>Registered: {{ car.meta.registered_date }} €</li>
         </ul>
-        <p>
-          {{ car.meta.description }}
-        </p>
-        <p>
-          {{ car.meta.technical_specs }}
-        </p>
+        <div v-html='car.meta.description'/>
+        <div v-html='car.meta.technical_specs'/>
         <PictureGallery v-if='car.pictures[0].small' :pictures='car.pictures'/>
       </li>
     </ul>
