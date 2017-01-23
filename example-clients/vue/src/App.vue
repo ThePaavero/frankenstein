@@ -1,7 +1,10 @@
 <template>
   <div id='app'>
     <h1>Cars and Parts for Sale!</h1>
-    <CarList v-if='this.$store.cars'/>
+    <CarList v-if='this.$store.state.cars' :cars='this.$store.state.cars'/>
+    <div v-else>
+      <p>Loading cars, just a second...</p>
+    </div>
   </div>
 </template>
 
@@ -33,7 +36,7 @@
         return new Promise((resolve, reject) => {
           axios.get('http://frankenstein-demo.dev:8000/?json=cars.getWithTaxonomies')
             .then((response) => {
-              resolve(response.data)
+              resolve(response.data.cars)
             })
             .catch((err) => {
               reject(err)
