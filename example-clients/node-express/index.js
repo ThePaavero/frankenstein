@@ -4,7 +4,7 @@ const axios = require('axios')
 
 const getCars = () => {
   return new Promise((resolve, reject) => {
-    axios.get('http://frankenstein-demo.dev:8000/?json=get_posts&post_type=cars')
+    axios.get('http://frankenstein-demo.dev:8000/?json=cars.getWithTaxonomies')
       .then((response) => {
         resolve(response.data)
       })
@@ -17,6 +17,7 @@ const getCars = () => {
 app.get('/cars', function (req, res) {
   getCars()
     .then((data) => {
+      // Do stuff
       res.send(data)
     })
     .catch((err) => {
