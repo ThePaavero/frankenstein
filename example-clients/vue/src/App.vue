@@ -17,6 +17,13 @@
     mounted() {
       this.$router.push('/')
       this.getCars()
+        .then((cars) => {
+          this.$store.commit('updateCars', cars)
+        })
+        .catch((err) => {
+          console.error(err)
+          window.alert('Error: Could not fetch car list from server.')
+        })
     },
     methods: {
       goHome() {

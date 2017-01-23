@@ -11,6 +11,7 @@ class JSON_API_Cars_Controller
 
     public function __construct()
     {
+        header('Access-Control-Allow-Origin: *');
         global $json_api;
         $this->api = $json_api;
     }

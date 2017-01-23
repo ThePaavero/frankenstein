@@ -7,7 +7,11 @@ const state = {
   cars: null
 }
 
-const mutations = {}
+const mutations = {
+  updateCars(state, cars) {
+    state.cars = cars
+  }
+}
 
 export default new Vuex.Store({
   state,
