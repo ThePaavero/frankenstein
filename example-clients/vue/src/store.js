@@ -4,12 +4,16 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  cars: null
+  cars: null,
+  activeCarId: null
 }
 
 const mutations = {
   updateCars(state, cars) {
     state.cars = cars
+  },
+  activateCarId(state, id) {
+    state.activeCarId = state.activeCarId === id ? null : id
   }
 }
 
