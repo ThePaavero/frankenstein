@@ -34,7 +34,7 @@
       },
       getCars() {
         return new Promise((resolve, reject) => {
-          axios.get('http://frankenstein-demo.dev:8000/?json=cars.getWithTaxonomies')
+          axios.get('http://frankenstein-demo.dev/?json=cars.getWithTaxonomies')
             .then((response) => {
               resolve(response.data.cars)
             })

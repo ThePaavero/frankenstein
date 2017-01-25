@@ -24,14 +24,17 @@ class JSON_API_Cars_Controller
             {
                 $meta[$key] = $value[0];
             }
-            $meta->title = $car->post_title;
             $imageGalleryObject = unserialize($meta['picture_gallery']);
-            $color = get_the_terms($car, 'color');
-            $aspiration = get_the_terms($car, 'aspiration');
+            $color = get_the_terms($car, 'color')[0]->name;
+            $aspiration = get_the_terms($car, 'aspiration')[0]->name;
             $formatted[] = [
-                'post' => $car,
-                'meta' => $meta,
+                'id' => $car->ID,
+                'title' => $car->post_title,
+                'registrationDate' => $meta['registered_date'],
+                'description' => $meta['description'],
+                'specs' => $meta['technical_specs'],
                 'color' => $color,
+                'price' => $meta['price'],
                 'aspiration' => $aspiration,
                 'pictures' => $this->getPictures($imageGalleryObject)
             ];
@@ -48,7 +51,7 @@ class JSON_API_Cars_Controller
         $images = [];
         foreach ($imageAttachmentArray as $data)
         {
-            $imageId = (int)$data['file'];
+            $imageId = (int) $data['file'];
             $images[] = [
                 'small' => wp_get_attachment_image_src($imageId, 'thumbnail')[0],
                 'medium' => wp_get_attachment_image_src($imageId, 'medium')[0],

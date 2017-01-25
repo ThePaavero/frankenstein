@@ -3,16 +3,16 @@
     <h2>List of Cars</h2>
     <ul>
       <li v-for='car in cars'>
-        <a href="#" @click.prevent='openCar(car.post.ID)'>
-          <h3>{{ car.post.post_title }}</h3>
+        <a href="#" @click.prevent='openCar(car.id)'>
+          <h3>{{ car.title }}</h3>
         </a>
-        <div v-if='getActiveCarId() === car.post.ID'>
+        <div v-if='getActiveCarId() === car.id'>
           <ul>
-            <li>Price: {{ car.meta.price }} €</li>
-            <li>Registered: {{ car.meta.registered_date }} €</li>
+            <li>Price: {{ car.price }} €</li>
+            <li>Registered: {{ car.registrationDate }} €</li>
           </ul>
-          <div v-html='car.meta.description'/>
-          <div v-html='car.meta.technical_specs'/>
+          <div v-html='car.description'/>
+          <div v-html='car.specs'/>
           <PictureGallery v-if='car.pictures[0].small' :pictures='car.pictures'/>
         </div>
       </li>
