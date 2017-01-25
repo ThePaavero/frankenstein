@@ -45,7 +45,6 @@
       }
     }
   }
-
 </script>
 
 <style lang='scss' rel='stylesheet/scss'>
@@ -79,5 +78,4 @@
   .fade-enter, .fade-leave-active {
     opacity: 0
   }
-
 </style>
