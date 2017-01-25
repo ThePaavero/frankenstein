@@ -9,7 +9,7 @@ class JSON_API_Cars_Controller extends FrankensteinController
         parent::__construct();
     }
 
-    public function getWithTaxonomies()
+    public function getAll()
     {
         $formatted = [];
         $cars = $this->getItemsOfType('cars');
