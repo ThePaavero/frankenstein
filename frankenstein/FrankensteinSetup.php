@@ -18,7 +18,7 @@ class FrankensteinSetup
 
     public function run()
     {
-        $this->createPostTypes($this->config->postTypes);
+        $this->createPostTypes($this->config->itemTypes);
         $this->createTaxonomies($this->config->taxonomies);
         $this->registerControllers();
     }
@@ -76,7 +76,7 @@ class FrankensteinSetup
     {
         foreach ($taxonomies as $taxonomy)
         {
-            Taxonomy::make($taxonomy->slug, $taxonomy->appliesToPostTypes, $taxonomy->namePlural, $taxonomy->nameSingular)->set([
+            Taxonomy::make($taxonomy->slug, $taxonomy->appliesToItemTypes, $taxonomy->namePlural, $taxonomy->nameSingular)->set([
                 'public' => true
             ]);
         }

@@ -12,12 +12,12 @@ class JSON_API_Cars_Controller extends FrankensteinController
     public function getWithTaxonomies()
     {
         $formatted = [];
-        $cars = $this->getPostsOfType('cars');
+        $cars = $this->getItemsOfType('cars');
 
         foreach ($cars as $car)
         {
-            $fields = $this->getOwnFields($car);
             $id = $this->getItemId($car);
+            $fields = $this->getOwnFields($car);
             $formatted[] = [
                 'id' => $id,
                 'title' => $this->getItemTitle($car),

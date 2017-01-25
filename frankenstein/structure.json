@@ -1,5 +1,5 @@
 {
-  "postTypes": [
+  "itemTypes": [
     {
       "nameSingular": "Car",
       "namePlural": "Cars",
@@ -92,7 +92,7 @@
       "nameSingular": "Color",
       "namePlural": "Colors",
       "slug": "color",
-      "appliesToPostTypes": [
+      "appliesToItemTypes": [
         "cars"
       ]
     },
@@ -100,7 +100,7 @@
       "nameSingular": "Aspiration",
       "namePlural": "Aspirations",
       "slug": "aspiration",
-      "appliesToPostTypes": [
+      "appliesToItemTypes": [
         "cars"
       ]
     },
@@ -108,7 +108,7 @@
       "nameSingular": "Type",
       "namePlural": "Types",
       "slug": "part_type",
-      "appliesToPostTypes": [
+      "appliesToItemTypes": [
         "parts"
       ]
     }

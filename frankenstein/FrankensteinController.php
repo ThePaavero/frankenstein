@@ -13,7 +13,7 @@ class FrankensteinController
         $this->api = $json_api;
     }
 
-    public function getPostsOfType($typeString)
+    public function getItemsOfType($typeString)
     {
         return get_posts([
             'post_type' => $typeString
