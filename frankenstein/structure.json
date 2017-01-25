@@ -19,6 +19,12 @@
           "slug": "registered_date"
         },
         {
+          "title": "Mileage",
+          "type": "number",
+          "info": "Miles driven",
+          "slug": "mileage"
+        },
+        {
           "title": "Short Description",
           "type": "editor",
           "info": "Keep it short for SEO reasons!",
