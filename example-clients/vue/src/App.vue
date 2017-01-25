@@ -5,17 +5,23 @@
     <div v-else>
       <p>Loading cars, just a second...</p>
     </div>
+    <PartList v-if='this.$store.state.parts' :parts='this.$store.state.parts'/>
+    <div v-else>
+      <p>Loading parts, just a second...</p>
+    </div>
   </div>
 </template>
 
 <script>
   import CarList from './components/CarList.vue'
+  import PartList from './components/PartList.vue'
   import axios from 'axios'
 
   export default {
     name: 'app',
     components: {
-      CarList
+      CarList,
+      PartList,
     },
     mounted() {
       this.$router.push('/')
@@ -27,6 +33,14 @@
           console.error(err)
           window.alert('Error: Could not fetch car list from server.')
         })
+      this.getParts()
+        .then((parts) => {
+          this.$store.commit('updateParts', parts)
+        })
+        .catch((err) => {
+          console.error(err)
+          window.alert('Error: Could not fetch part list from server.')
+        })
     },
     methods: {
       goHome() {
@@ -37,6 +51,17 @@
           axios.get('http://frankenstein-demo.dev/?json=cars.getAll')
             .then((response) => {
               resolve(response.data.cars)
+            })
+            .catch((err) => {
+              reject(err)
+            })
+        })
+      },
+      getParts() {
+        return new Promise((resolve, reject) => {
+          axios.get('http://frankenstein-demo.dev/?json=parts.getAll')
+            .then((response) => {
+              resolve(response.data.parts)
             })
             .catch((err) => {
               reject(err)
