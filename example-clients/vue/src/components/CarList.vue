@@ -45,8 +45,13 @@
   }
 </script>
 <style lang='scss' rel='stylesheet/scss' scoped>
+  a {
+    color: inherit;
+  }
+
   .tag-list {
     list-style-type: none;
+
     li {
       display: inline-block;
       background: rgba(0, 0, 0, 0.2);
