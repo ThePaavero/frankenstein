@@ -38,6 +38,25 @@ class FrankensteinController
         return $nameOnly ? $term->name : $term;
     }
 
+    public function getTaxonomyMany($post, $taxonomyKey, $nameOnly = true)
+    {
+        $return = [];
+        $terms = get_the_terms($post, $taxonomyKey);
+        foreach ($terms as $term)
+        {
+            if ($nameOnly)
+            {
+                $return[] = $term->name;
+            }
+            else
+            {
+                $return[] = $term;
+            }
+        }
+
+        return $return;
+    }
+
     public function getItemId($post)
     {
         return $post->ID;

@@ -25,6 +25,7 @@ class JSON_API_Cars_Controller extends FrankensteinController
                 'description' => $fields['description'],
                 'specs' => $fields['technical_specs'],
                 'color' => $this->getTaxonomySingle($car, 'color'),
+                'tags' => $this->getTaxonomyMany($car, 'misc_tags'),
                 'price' => $fields['price'],
                 'aspiration' => $this->getTaxonomySingle($car, 'aspiration'),
                 'pictures' => $this->getPictures(unserialize($fields['picture_gallery']))

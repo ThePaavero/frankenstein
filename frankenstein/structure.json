@@ -97,6 +97,15 @@
       ]
     },
     {
+      "nameSingular": "Misc. tag",
+      "namePlural": "Misc. tags",
+      "slug": "misc_tags",
+      "appliesToItemTypes": [
+        "cars",
+        "parts"
+      ]
+    },
+    {
       "nameSingular": "Aspiration",
       "namePlural": "Aspirations",
       "slug": "aspiration",

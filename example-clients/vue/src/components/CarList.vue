@@ -5,6 +5,9 @@
       <li v-for='car in cars'>
         <a href="#" @click.prevent='openCar(car.id)'>
           <h3>{{ car.title }}</h3>
+          <ul class='tag-list'>
+            <li v-for='tag in car.tags'>{{ tag }}</li>
+          </ul>
         </a>
         <div v-if='getActiveCarId() === car.id'>
           <ul>
@@ -42,4 +45,15 @@
   }
 </script>
 <style lang='scss' rel='stylesheet/scss' scoped>
+  .tag-list {
+    list-style-type: none;
+    li {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.2);
+      color: #000;
+      font-size: 11px;
+      margin: 2px;
+      padding: 2px 5px;
+    }
+  }
 </style>
