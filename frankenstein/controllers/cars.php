@@ -1,10 +1,5 @@
 <?php
 
-/*
-Controller name: Cars
-Controller description: Cars
-*/
-
 class JSON_API_Cars_Controller
 {
     private $api;

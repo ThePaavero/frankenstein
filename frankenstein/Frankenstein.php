@@ -8,9 +8,11 @@ use Themosis\Facades\Taxonomy;
 class Frankenstein
 {
     public $config;
+    public $controllerDir;
 
     public function __construct($config)
     {
+        $this->controllerDir = __DIR__ . '/controllers/';
         $this->config = $config;
     }
 
@@ -18,6 +20,7 @@ class Frankenstein
     {
         $this->createPostTypes($this->config->postTypes);
         $this->createTaxonomies($this->config->taxonomies);
+        $this->registerControllers();
     }
 
     public function createFields($fields)
@@ -77,5 +80,34 @@ class Frankenstein
                 'public' => true
             ]);
         }
+    }
+
+    public function registerControllers()
+    {
+        $files = scandir($this->controllerDir);
+        foreach ($files as $filename)
+        {
+            if (strstr($filename, '.php'))
+            {
+                $this->registerController(str_replace('.php', '', $filename));
+            }
+        }
+    }
+
+    public function registerController($controllerName)
+    {
+        $slug = strtolower($controllerName);
+
+        add_filter('json_api_controllers', function ($controllers) use ($slug)
+        {
+            $controllers[] = $slug;
+
+            return $controllers;
+        });
+
+        add_filter('json_api_' . $slug . '_controller_path', function () use ($slug)
+        {
+            return $this->controllerDir . $slug . '.php';
+        });
     }
 }
