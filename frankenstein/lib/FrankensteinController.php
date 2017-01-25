@@ -8,9 +8,40 @@ class FrankensteinController
 
     public function __construct()
     {
-        header('Access-Control-Allow-Origin: *');
         global $json_api;
         $this->api = $json_api;
+        $this->doOriginWall();
+    }
+
+    public function doOriginWall()
+    {
+        $origin = $_SERVER['HTTP_ORIGIN'];
+        if (!$origin)
+        {
+            return header('Access-Control-Allow-Origin: *');
+        }
+        $okUrls = json_decode(file_get_contents(__DIR__ . '/../okayUrls.json'))->allowed;
+        if (!in_array($origin, $okUrls))
+        {
+            header('Access-Control-Allow-Origin: *');
+            die(json_encode([
+                'error' => 'This URL is not allowed.'
+            ]));
+        }
+
+        return header('Access-Control-Allow-Origin: ' . $origin);
+    }
+
+    public function getDomainFromUrl($url)
+    {
+        $pieces = parse_url($url);
+        $domain = isset($pieces['host']) ? $pieces['host'] : '';
+        if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs))
+        {
+            return $regs['domain'];
+        }
+
+        return false;
     }
 
     public function getItemsOfType($typeString, $limit = 0)
