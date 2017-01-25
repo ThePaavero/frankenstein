@@ -8,6 +8,7 @@
         </a>
         <div v-if='getActiveCarId() === car.id'>
           <ul>
+            <li v-if='car.color'>Color: {{ car.color }}</li>
             <li>Price: {{ car.price }} €</li>
             <li>Registered: {{ car.registrationDate }} €</li>
           </ul>
