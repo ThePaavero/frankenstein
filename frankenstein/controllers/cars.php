@@ -1,14 +1,12 @@
 <?php
 
-class JSON_API_Cars_Controller
-{
-    private $api;
+use Frankenstein\FrankensteinController;
 
+class JSON_API_Cars_Controller extends FrankensteinController
+{
     public function __construct()
     {
-        header('Access-Control-Allow-Origin: *');
-        global $json_api;
-        $this->api = $json_api;
+        parent::__construct();
     }
 
     public function getWithTaxonomies()
