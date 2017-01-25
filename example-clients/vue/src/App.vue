@@ -1,3 +1,4 @@
+<script src="../config/dev.env.js"></script>
 <template>
   <div id='app'>
     <h1>Cars and Parts for Sale!</h1>
@@ -16,6 +17,7 @@
   import CarList from './components/CarList.vue'
   import PartList from './components/PartList.vue'
   import axios from 'axios'
+  import envConf from './environmentConfig.json'
 
   export default {
     name: 'app',
@@ -48,7 +50,7 @@
       },
       getCars() {
         return new Promise((resolve, reject) => {
-          axios.get('http://frankenstein-demo.dev/?json=cars.getAll')
+          axios.get(envConf.backendApiBaseUrl + '/?json=cars.getAll')
             .then((response) => {
               resolve(response.data.cars)
             })
@@ -59,7 +61,7 @@
       },
       getParts() {
         return new Promise((resolve, reject) => {
-          axios.get('http://frankenstein-demo.dev/?json=parts.getAll')
+          axios.get(envConf.backendApiBaseUrl + '/?json=parts.getAll')
             .then((response) => {
               resolve(response.data.parts)
             })
