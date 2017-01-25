@@ -8,9 +8,13 @@ const state = {
   activeCarId: null,
   parts: null,
   activePartId: null,
+  staff: null
 }
 
 const mutations = {
+  updateStaff(state, staff) {
+    state.staff = staff
+  },
   updateCars(state, cars) {
     state.cars = cars
   },

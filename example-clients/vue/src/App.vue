@@ -2,6 +2,12 @@
 <template>
   <div id='app'>
     <h1>Cars and Parts for Sale!</h1>
+    <nav>
+      <ul>
+        <li><a href='#' @click.prevent='loadStaff()'>Read bout our staff</a></li>
+      </ul>
+    </nav>
+    <StaffList v-if='this.$store.state.staff' :staff='this.$store.state.staff' :onClose='unloadStaff'/>
     <CarList v-if='this.$store.state.cars' :cars='this.$store.state.cars'/>
     <div v-else>
       <p>Loading cars, just a second...</p>
@@ -16,6 +22,7 @@
 <script>
   import CarList from './components/CarList.vue'
   import PartList from './components/PartList.vue'
+  import StaffList from './components/StaffList.vue'
   import axios from 'axios'
   import envConf from './environmentConfig.json'
 
@@ -24,6 +31,7 @@
     components: {
       CarList,
       PartList,
+      StaffList
     },
     mounted() {
       this.$router.push('/')
@@ -47,6 +55,15 @@
     methods: {
       goHome() {
         this.$router.push('/')
+      },
+      loadStaff() {
+        axios.get(envConf.backendApiBaseUrl + '/?json=misc.getStaff')
+          .then((response) => {
+            this.$store.commit('updateStaff', response.data.staff)
+          })
+      },
+      unloadStaff() {
+        this.$store.commit('updateStaff', null)
       },
       getCars() {
         return new Promise((resolve, reject) => {

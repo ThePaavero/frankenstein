@@ -2,5 +2,5 @@
 
 Route::get('/', function ()
 {
-    return ':D';
+    return 'API calls only.';
 });

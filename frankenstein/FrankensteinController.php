@@ -73,7 +73,7 @@ class FrankensteinController
         $images = [];
         foreach ($imageAttachmentArray as $data)
         {
-            $imageId = (int) $data['file'];
+            $imageId = (int)$data['file'];
             $images[] = [
                 'small' => wp_get_attachment_image_src($imageId, 'thumbnail')[0],
                 'medium' => wp_get_attachment_image_src($imageId, 'medium')[0],
@@ -82,5 +82,14 @@ class FrankensteinController
         }
 
         return $images;
+    }
+
+    public function getImageById($imageId)
+    {
+        return [
+            'small' => wp_get_attachment_image_src($imageId, 'thumbnail')[0],
+            'medium' => wp_get_attachment_image_src($imageId, 'medium')[0],
+            'original' => wp_get_attachment_url($imageId)
+        ];
     }
 }

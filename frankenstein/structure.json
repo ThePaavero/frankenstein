@@ -91,6 +91,32 @@
           ]
         }
       ]
+    },
+    {
+      "nameSingular": "Staff",
+      "namePlural": "Staff",
+      "slug": "staff",
+      "dashIcon": "dashicons-admin-users",
+      "fields": [
+        {
+          "title": "Email",
+          "type": "text",
+          "info": "",
+          "slug": "email"
+        },
+        {
+          "title": "Phone",
+          "type": "text",
+          "info": "",
+          "slug": "phone"
+        },
+        {
+          "title": "Photo",
+          "type": "media",
+          "info": "",
+          "slug": "photo"
+        }
+      ]
     }
   ],
   "taxonomies": [
