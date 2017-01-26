@@ -3,7 +3,7 @@
     <h2>This is us! <a href='#' class='closer' @click.prevent='onClose()'>&#10006;</a></h2>
     <ul>
       <li v-for='person in staff'>
-        <h4>{{ person.title }}</h4>
+        <h4>{{ person.name }}</h4>
         <p>Phone: {{ person.phone }}</p>
         <p>Email: {{ person.email }}</p>
         <img :src='person.photo.medium' alt=''/>
