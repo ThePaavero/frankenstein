@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>This is us! <a href='#' class='closer' @click.prevent='onClose()'>&#10006;</a></h2>
+    <h2>This is us! <a href='#' class='closer' @click.prevent='onClose()' title='Close'>&#10006;</a></h2>
     <ul>
       <li v-for='person in staff'>
         <h4>{{ person.name }}</h4>
