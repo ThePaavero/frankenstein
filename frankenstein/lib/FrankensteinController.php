@@ -16,12 +16,12 @@ class FrankensteinController
     public function doOriginWall()
     {
         $origin = $_SERVER['HTTP_ORIGIN'];
-        if (!$origin)
+        if ( ! $origin)
         {
             return header('Access-Control-Allow-Origin: *');
         }
         $okUrls = json_decode(file_get_contents(__DIR__ . '/../okayUrls.json'))->allowed;
-        if (!in_array($origin, $okUrls))
+        if ( ! in_array($origin, $okUrls))
         {
             header('Access-Control-Allow-Origin: *');
             die(json_encode([
@@ -30,18 +30,6 @@ class FrankensteinController
         }
 
         return header('Access-Control-Allow-Origin: ' . $origin);
-    }
-
-    public function getDomainFromUrl($url)
-    {
-        $pieces = parse_url($url);
-        $domain = isset($pieces['host']) ? $pieces['host'] : '';
-        if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs))
-        {
-            return $regs['domain'];
-        }
-
-        return false;
     }
 
     public function getItemsOfType($typeString, $limit = 0)
@@ -104,7 +92,7 @@ class FrankensteinController
         $images = [];
         foreach ($imageAttachmentArray as $data)
         {
-            $imageId = (int)$data['file'];
+            $imageId = (int) $data['file'];
             $images[] = [
                 'small' => wp_get_attachment_image_src($imageId, 'thumbnail')[0],
                 'medium' => wp_get_attachment_image_src($imageId, 'medium')[0],
