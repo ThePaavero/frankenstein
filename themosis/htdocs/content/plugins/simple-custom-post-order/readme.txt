@@ -1,9 +1,9 @@
 === Simple Custom Post Order ===
-Contributors: hsameerc
+Contributors: colorlibplugins, silkalns
 Tags: custom post order, post order, js post order, page order, posts order, category order, sort posts, sort pages, sort custom posts
 Requires at least: 3.5.1
-Tested up to: 4.1.1
-Stable tag: 4.1.1
+Tested up to: 4.7.2
+Stable tag: 4.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,8 @@ Order posts(posts, any custom post types) using a Drag and Drop Sortable JavaScr
 
 Order posts(posts, any custom post types) using a Drag and Drop Sortable JavaScript. Configuration is unnecessary. You can do directly on default WordPress administration.
 Excluding custom query which uses order or orderby parameters, in get_posts or query_posts and so on.
+
+This plugins is now supported and maintained by <a href=“https://colorlib.com/wp/” rel=“friend” target=“_blank”>Colorlib</a>. 
 
 == Installation ==
 

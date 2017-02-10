@@ -9,7 +9,7 @@
         {
           "title": "Price",
           "type": "number",
-          "info": "",
+          "info": "EUR",
           "slug": "price"
         },
         {
@@ -27,13 +27,13 @@
         {
           "title": "Short Description",
           "type": "editor",
-          "info": "Keep it short for SEO reasons!",
+          "info": "Keep it short and sweet.",
           "slug": "description"
         },
         {
           "title": "Technical Specifications",
           "type": "editor",
-          "info": "Make it look good.",
+          "info": "Exaggerate, lie, etc.",
           "slug": "technical_specs"
         },
         {
