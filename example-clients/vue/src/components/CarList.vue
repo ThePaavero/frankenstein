@@ -9,7 +9,6 @@
         <ul class='tag-list'>
           <li v-for='tag in car.tags'>{{ tag.name }}</li>
         </ul>
-
         <div v-if='getActiveCarId() === car.id'>
           <ul>
             <li>Mileage: {{ car.mileage }} miles/km</li>

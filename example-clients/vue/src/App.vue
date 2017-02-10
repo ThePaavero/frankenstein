@@ -34,7 +34,6 @@
       StaffList
     },
     mounted() {
-      this.$router.push('/')
       this.getCars()
         .then((cars) => {
           this.$store.commit('updateCars', cars)
@@ -53,9 +52,6 @@
         })
     },
     methods: {
-      goHome() {
-        this.$router.push('/')
-      },
       loadStaff() {
         axios.get(envConf.backendApiBaseUrl + '/?json=misc.getStaff')
           .then((response) => {
