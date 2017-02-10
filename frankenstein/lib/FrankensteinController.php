@@ -178,4 +178,15 @@ class FrankensteinController
             'original' => wp_get_attachment_url($imageId)
         ];
     }
+
+    /**
+     * Get all terms for given taxonomy type.
+     *
+     * @param $typeSlug
+     * @return array|int|\WP_Error
+     */
+    public function getAllTermsForTaxonomyType($typeSlug)
+    {
+        return get_terms($typeSlug);
+    }
 }

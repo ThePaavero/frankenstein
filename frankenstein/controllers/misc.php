@@ -28,4 +28,9 @@ class JSON_API_Misc_Controller extends FrankensteinController
             'staff' => $people
         ];
     }
+
+    public function getColors()
+    {
+        return $this->getAllTermsForTaxonomyType('color');
+    }
 }
